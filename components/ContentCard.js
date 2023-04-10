@@ -1,5 +1,5 @@
 import Stack from "@mui/material/Stack";
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
@@ -8,8 +8,15 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import { FaRegComment } from "react-icons/fa";
+import galleryimg from "../assets/gallery.png";
+import Input from "@mui/material/Input";
+import FormControl from "@mui/material/FormControl";
+import Send from "@mui/icons-material/Send";
+import { FormGroup } from "@mui/material";
 
-function ContentCard() {
+function ContentCard({ product }) {
+  const [openComments, setopenComments] = useState(false);
+  const { title, image, price, rating, category, description } = product;
   return (
     <>
       <Stack
@@ -31,11 +38,21 @@ function ContentCard() {
             alignItems: "center",
           }}
         >
-          <Image
-            style={{ height: "94%", width: "95%", borderRadius: 15 }}
-            alt="loading..."
-            src={require("../assets/gallery.png")}
-          />
+          {!image ? (
+            <Image
+              style={{ height: "94%", width: "95%", borderRadius: 15 }}
+              alt="loading..."
+              src={galleryimg}
+            />
+          ) : (
+            <img
+              width={20}
+              height={20}
+              style={{ height: "94%", width: "95%", borderRadius: 15 }}
+              alt="loading..."
+              src={image}
+            />
+          )}
         </Box>
 
         <Box
@@ -84,12 +101,12 @@ function ContentCard() {
                     fontSize: 12,
                   }}
                 >
-                  May
+                  Price
                 </Typography>
                 <Typography
-                  sx={{ color: "darkblue", fontWeight: "bold", fontSize: 25 }}
+                  sx={{ color: "darkblue", fontWeight: "bold", fontSize: 10 }}
                 >
-                  08
+                  ₹{price}
                 </Typography>
               </Stack>
               <Stack
@@ -108,12 +125,12 @@ function ContentCard() {
                     fontSize: 12,
                   }}
                 >
-                  How to manage your time & Get More Done
+                  {title}
                 </Typography>
                 <Typography
                   sx={{ color: "grey", fontWeight: "bold", fontSize: 7 }}
                 >
-                  Thu 10:00
+                  {category}
                 </Typography>
               </Stack>
               <Stack
@@ -139,7 +156,10 @@ function ContentCard() {
               <Typography
                 sx={{ color: "grey", fontWeight: "bold", fontSize: 7 }}
               >
-                Description
+                Description <br />
+                {description.length > 240
+                  ? description.slice(0, 240) + "..."
+                  : description}
               </Typography>
             </Box>
             <Box
@@ -174,19 +194,39 @@ function ContentCard() {
                 </Typography>
               </Stack>
             </Box>
-            <Box
-              sx={{
-                width: "100%",
-
-                height: "20%",
-              }}
+            <Box 
+            
+              sx={{width:'100%'}}
             >
+             
               <IconButton sx={{ float: "right" }}>
                 <ThumbUpOutlinedIcon />
               </IconButton>
-              <IconButton sx={{ float: "right" }}>
-                <FaRegComment />
-              </IconButton>
+             
+               {!openComments && <IconButton
+                  sx={{ float: "right" }}
+                  onClick={() => {
+                    setopenComments(true);
+                  }}
+                >
+                  <FaRegComment/>
+                </IconButton>}
+                {openComments && (
+                <Box sx={{width:'85%' }}>
+                  <FormGroup row >
+                  <Input
+                    placeholder="Write a comment..."
+                    sx={{ fontSize: "small" ,width: "80%"}}
+                  />
+
+                  <IconButton onClick={()=>{setopenComments(false)}}>
+                    <Send sx={{color:"blue"}}/>
+                  </IconButton>
+                  </FormGroup>
+                </Box>
+              )}
+             
+             
             </Box>
           </Stack>
         </Box>

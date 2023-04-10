@@ -6,8 +6,11 @@ import Image from "next/image";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import IconButton from "@mui/material/IconButton";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import { useUser } from "@supabase/auth-helpers-react/dist";
 
 function Comments() {
+  const user =useUser()
+  
   return (
     <Box
       flex={1}
@@ -67,7 +70,7 @@ function Comments() {
               <Typography
                 sx={{ color: "black", fontSize: 10, fontWeight: "bold" }}
               >
-                Name
+                {user.user_metadata.first_name}
               </Typography>
               <IconButton size="small">
                 <ExpandMoreOutlinedIcon sx={{ fontSize: 16 }} />

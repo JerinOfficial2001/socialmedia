@@ -91,6 +91,7 @@ function NavBar() {
           color: "grey",
           width: "35%",
           borderRadius: "0% 0% 15px 15px",
+          boxShadow:'0px 0px 1px 1px'
         }}
       >
         {NavMenus.map((navmenu, index) => {

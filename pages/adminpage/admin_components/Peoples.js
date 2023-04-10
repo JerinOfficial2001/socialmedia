@@ -6,7 +6,7 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
-function Peoples() {
+function Peoples({handleSearch}) {
   return (
     <Box
       flex={1}
@@ -57,6 +57,7 @@ function Peoples() {
                 padding: 10,
                 color: "black",
               }}
+              onChange={(e)=>{handleSearch(e.target.value)}}
             />
           </Stack>
         
