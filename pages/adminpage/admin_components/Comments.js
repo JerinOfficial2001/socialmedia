@@ -11,7 +11,7 @@ import { Avatar } from "@mui/material";
 
 function Comments() {
   const user =useUser()
-  const username =user.user_metadata.first_name
+ 
 //  const username=user.user_metadata.first_name
   return (
     <Box
@@ -59,12 +59,12 @@ function Comments() {
                 gap: 1,
               }}
             >
-             <Avatar alt={username} sx={{height:20,width:20}}/>
+             <Avatar alt="k" sx={{height:20,width:20}}/>
 
               <Typography
                 sx={{ color: "black", fontSize: 10, fontWeight: "bold" }}
               >
-                {username}
+                {/* {username} */}
               </Typography>
               <IconButton size="small">
                 <ExpandMoreOutlinedIcon sx={{ fontSize: 16 }} />
