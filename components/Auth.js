@@ -10,6 +10,7 @@ export default function Auth() {
   const [sucessMessage, setsucessMessage] = useState(false);
   const [invalidMessage, setinvalidMessage] = useState(false);
   const [signUpSwitch, setsignUpSwitch] = useState(false);
+  const [userData, setuserData] = useState([]);
 
   const [inputDatas, setinputDatas] = useState({
     email: "",
@@ -41,12 +42,23 @@ export default function Auth() {
     console.log(inputDatas);
     setinputDatas({ email: "", password: "" });
   };
+  
   //signup
   const handleSubmitSignup = async () => {
     if (name !=="" && email !== "" && password !== "" && dob !=='' ) {
       setvalidator(false);
       setinvalidMessage(false);
+    
 
+       //getdatas
+
+ const {Error,Data}= await supabase.from('profiles').insert({name})
+ if(Data){
+   setuserData(Data)
+   console.log(Data);
+ }else{
+   console.log("AuthUserdata",Error);
+ }
       //auth
       const { error } = await supabase.auth.signUp({
         email: email,

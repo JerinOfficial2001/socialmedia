@@ -7,9 +7,11 @@ import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import IconButton from "@mui/material/IconButton";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import { useUser } from "@supabase/auth-helpers-react/dist";
+import { Avatar } from "@mui/material";
 
 function Comments() {
   const user =useUser()
+  const username =user.user_metadata.first_name
 //  const username=user.user_metadata.first_name
   return (
     <Box
@@ -57,20 +59,12 @@ function Comments() {
                 gap: 1,
               }}
             >
-              <Image
-                src={require("../../../assets/avatar.jpg")}
-                alt="group"
-                style={{
-                  height: "25px",
-                  width: "25px",
-                  borderRadius: "50%",
-                }}
-              />
+             <Avatar alt={username} sx={{height:20,width:20}}/>
 
               <Typography
                 sx={{ color: "black", fontSize: 10, fontWeight: "bold" }}
               >
-                {/* {username} */}Name
+                {username}
               </Typography>
               <IconButton size="small">
                 <ExpandMoreOutlinedIcon sx={{ fontSize: 16 }} />

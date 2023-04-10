@@ -13,10 +13,34 @@ import Input from "@mui/material/Input";
 import FormControl from "@mui/material/FormControl";
 import Send from "@mui/icons-material/Send";
 import { FormGroup } from "@mui/material";
+import { supabase } from "@/SupabaseClient";
+import { useUser } from "@supabase/auth-helpers-react";
 
 function ContentCard({ product }) {
+  const user =useUser()
+  const user_id=user?.id
   const [openComments, setopenComments] = useState(false);
+  const [comment,setComment]=useState("")
+  const [commentData,setCommentData]=useState([])
+
   const { title, image, price, rating, category, description } = product;
+
+const getComment =async()=>{
+  if(comment !==""){
+  const {error,data}=await supabase.from('comments').insert({comment,user_id})
+  if(data){
+    setCommentData(data)
+  
+  }else{
+    console.log(error);
+    
+  }
+  setopenComments(false)
+  setComment('')
+  console.log(commentData);
+}}
+
+
   return (
     <>
       <Stack
@@ -217,9 +241,11 @@ function ContentCard({ product }) {
                   <Input
                     placeholder="Write a comment..."
                     sx={{ fontSize: "small" ,width: "80%"}}
+                    value={comment}
+                    onChange={(e)=>{setComment(e.target.value)}}
                   />
 
-                  <IconButton onClick={()=>{setopenComments(false)}}>
+                  <IconButton onClick={()=>{getComment()}}>
                     <Send sx={{color:"blue"}}/>
                   </IconButton>
                   </FormGroup>
