@@ -10,7 +10,7 @@ import { useUser } from "@supabase/auth-helpers-react/dist";
 
 function Comments() {
   const user =useUser()
-  
+ const username=user.user_metadata.first_name
   return (
     <Box
       flex={1}
@@ -70,7 +70,7 @@ function Comments() {
               <Typography
                 sx={{ color: "black", fontSize: 10, fontWeight: "bold" }}
               >
-                {user.user_metadata.first_name}
+                {username}
               </Typography>
               <IconButton size="small">
                 <ExpandMoreOutlinedIcon sx={{ fontSize: 16 }} />
