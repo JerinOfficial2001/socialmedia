@@ -122,6 +122,8 @@ function Comments({item}) {
             </Box>
 {/* live comments section  ends */}
             <Image
+            placeholder="blur"
+            
               alt="loading..."
               src={require("../../../assets/gallery.png")}
               style={{ width: "100%", height: "100%",posotion:'relative' }}

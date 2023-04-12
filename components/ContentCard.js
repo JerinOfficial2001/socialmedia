@@ -87,7 +87,8 @@ function ContentCard({ product ,userData}) {
             {!image ? (
               <Image
                 style={{ height: "94%", width: "95%", borderRadius: 15 }}
-                alt="loading..."
+                placeholder="blur"
+                alt="loadind..."
                 src={galleryimg}
               />
             ) : (
@@ -222,7 +223,8 @@ function ContentCard({ product ,userData}) {
               >
                 <Image
                   src={require("../assets/avatar.jpg")}
-                  alt="group"
+                  placeholder="blur"
+                  alt="loading..."
                   style={{
                     height: "25px",
                     width: "25px",
