@@ -2,11 +2,11 @@ import React from "react";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import Comments from "../adminpage/admin_components/Comments";
-import NavBar from "../adminpage/admin_components/NavBar";
-import Peoples from "../adminpage/admin_components/Peoples";
 import  Typography  from "@mui/material/Typography";
 import Image from "next/image";
+import Comments from "@/adminpage/Comments";
+import NavBar from "@/adminpage/NavBar";
+import Peoples from "@/adminpage/Peoples";
 
 function Layout({ children ,handleSearch,item}) {
   return (
@@ -41,7 +41,7 @@ function Layout({ children ,handleSearch,item}) {
                 }}
               >
                 <Image
-                  src={require("../../assets/avatar.jpg")}
+                  src={require("../assets/avatar.jpg")}
                   alt="group"
                   style={{
                     height: "70%",
@@ -67,7 +67,7 @@ function Layout({ children ,handleSearch,item}) {
                 }}
               >
                 <Image
-                  src={require("../../assets/avatar.jpg")}
+                  src={require("../assets/avatar.jpg")}
                   alt="group"
                   style={{
                     height: "70%",

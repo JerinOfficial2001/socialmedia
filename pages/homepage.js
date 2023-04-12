@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./layouts/Layout";
 import ContentCard from "@/components/ContentCard";
 import Button from "@mui/material/Button";
 import { supabase } from "@/SupabaseClient";
 import PageNotFound from "./pageNotFound";
 import RegisterForm from "@/components/RegisterForm";
 import { useUser } from "@supabase/auth-helpers-react";
+import Layout from "@/layouts/Layout";
 
 
 

@@ -125,7 +125,7 @@ function Comments({item}) {
             placeholder="blur"
             
               alt="loading..."
-              src={require("../../../assets/gallery.png")}
+              src={require("../assets/gallery.png")}
               style={{ width: "100%", height: "100%",posotion:'relative' }}
             />
  

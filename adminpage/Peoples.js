@@ -96,7 +96,7 @@ function Peoples({handleSearch}) {
               }}
             >
               <Image
-                src={require("../../../assets/group.jpg")}
+                src={require("../assets/group.jpg")}
                 alt="group"
                 style={{
                   height: "25px",
@@ -154,7 +154,7 @@ function Peoples({handleSearch}) {
               }}
             >
               <Image
-                src={require("../../../assets/avatar.jpg")}
+                src={require("../assets/avatar.jpg")}
                 alt="group"
                 style={{
                   height: "25px",
