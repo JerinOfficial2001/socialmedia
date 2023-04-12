@@ -3,23 +3,25 @@ import Typography from "@mui/material/Typography";
 import { supabase } from "@/SupabaseClient";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
+import { useUser } from "@supabase/auth-helpers-react";
 
 export default function Auth() {
+const user=useUser()
+
 
   const [validator, setvalidator] = useState(false);
   const [sucessMessage, setsucessMessage] = useState(false);
   const [invalidMessage, setinvalidMessage] = useState(false);
   const [signUpSwitch, setsignUpSwitch] = useState(false);
-  const [userData, setuserData] = useState([]);
+
 
   const [inputDatas, setinputDatas] = useState({
     email: "",
     password: "",
-    name:'',
-    dob:'',
+   
     avatar_url:''
   });
-  const {name, email, password,dob,avatar_url } = inputDatas;
+  const { email, password,avatar_url } = inputDatas;
   const handleSubmit = async () => {
     if ( email !== "" && password !== "") {
       setvalidator(false);
@@ -45,20 +47,10 @@ export default function Auth() {
   
   //signup
   const handleSubmitSignup = async () => {
-    if (name !=="" && email !== "" && password !== "" && dob !=='' ) {
+    if (email !== "" && password !== "" ) {
       setvalidator(false);
       setinvalidMessage(false);
-    
 
-       //getdatas
-
- const {Error,Data}= await supabase.from('profiles').insert({name})
- if(Data){
-   setuserData(Data)
-   console.log(Data);
- }else{
-   console.log("AuthUserdata",Error);
- }
       //auth
       const { error } = await supabase.auth.signUp({
         email: email,
@@ -80,12 +72,11 @@ export default function Auth() {
       setsucessMessage(false);
     }
     console.log(inputDatas);
-    setinputDatas({ email: "", password: "",name:'' ,dob:'',avatar_url:''});
-  
+    setinputDatas({ email: "", password: "",avatar_url:''});
+ 
   };
-  
-  
-  
+ 
+
   return (
    
     <>
@@ -101,6 +92,7 @@ export default function Auth() {
       {!signUpSwitch ? (
         <>
           <form className="login">
+          <Typography color="black" sx={{fontWeight:'bold'}}>LOG IN</Typography>
             <input
               type="email"
               placeholder="Email"
@@ -159,33 +151,9 @@ export default function Auth() {
       ) : (
         <>
           {/* signup */}
-
+       
           <form className="login">
-          <input
-              type="file"
-             
-              value={avatar_url}
-              onChange={(e) => {
-                setinputDatas({ ...inputDatas, avatar_url: e.target.value });
-              }}
-            />
-          <input
-              type="name"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => {
-                setinputDatas({ ...inputDatas, name: e.target.value });
-              }}
-            />
-
-            <input
-              type="date"
-              
-              value={dob}
-              onChange={(e) => {
-                setinputDatas({ ...inputDatas, dob: e.target.value });
-              }}
-            />
+          <Typography color="black" sx={{fontWeight:'bold'}}>SIGN UP</Typography>
             <input
               type="email"
               placeholder="Email"

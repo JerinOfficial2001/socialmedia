@@ -7,17 +7,17 @@ import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import IconButton from "@mui/material/IconButton";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import { useUser } from "@supabase/auth-helpers-react/dist";
-import { Avatar } from "@mui/material";
+import  Avatar  from "@mui/material/Avatar";
 
-function Comments() {
-  const user =useUser()
+function Comments({item}) {
+ 
  
 //  const username=user.user_metadata.first_name
   return (
     <Box
       flex={1}
       sx={{
-        display: "flex",
+        display: { xl:"flex",lg:'flex',md:'flex',sm:'none',xs:'none'},
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
@@ -59,13 +59,15 @@ function Comments() {
                 gap: 1,
               }}
             >
-             <Avatar alt="k" sx={{height:20,width:20}}/>
-
-              <Typography
-                sx={{ color: "black", fontSize: 10, fontWeight: "bold" }}
-              >
-                {/* {username} */}
-              </Typography>
+             <Avatar   sx={{height:20,width:20,padding:2}}>
+             
+             </Avatar>
+            <Typography 
+                  sx={{ color: "black", fontSize: 10, fontWeight: "bold" }}
+                >
+                  {item.name}
+                </Typography>
+              
               <IconButton size="small">
                 <ExpandMoreOutlinedIcon sx={{ fontSize: 16 }} />
               </IconButton>

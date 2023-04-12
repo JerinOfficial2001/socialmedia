@@ -11,7 +11,7 @@ function Peoples({handleSearch}) {
     <Box
       flex={1}
       sx={{
-        display: "flex",
+        display:{ xl:"flex",lg:'flex',md:'flex',sm:'none',xs:'none'},
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",

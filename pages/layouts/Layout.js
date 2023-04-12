@@ -8,12 +8,12 @@ import Peoples from "../adminpage/admin_components/Peoples";
 import  Typography  from "@mui/material/Typography";
 import Image from "next/image";
 
-function Layout({ children ,handleSearch}) {
+function Layout({ children ,handleSearch,item}) {
   return (
     <>
       <Container maxWidth="xl" >
         <Stack direction="row" spacing={2} justifyContent="space-between">
-          <Peoples handleSearch={handleSearch}/>
+          <Peoples handleSearch={handleSearch} />
           <Box
             flex={2}
             sx={{
@@ -85,7 +85,7 @@ function Layout({ children ,handleSearch}) {
             </Stack>
             {children}
           </Box>
-          <Comments />
+          <Comments item={item}/>
         </Stack>
       </Container>
     </>
