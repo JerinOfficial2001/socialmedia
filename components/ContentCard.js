@@ -288,7 +288,7 @@ function ContentCard({ product ,userData}) {
           <>
             {openComments && (
               <CommentModal open={openComments} close={setopenComments}>
-                <Stack sx={{width:'90%',height:370,overflowY:'scroll'}}>
+                <Stack sx={{width:'90%',height:370,overflowY:'scroll',gap:2}}>
                 {commentData.map((exportCmds, index) => {
                   return (
                     <Box
@@ -301,7 +301,7 @@ function ContentCard({ product ,userData}) {
                     >
                       <Avatar sx={{ height: 30, width: 30 }} />
                       <Stack sx={{ width: "90%" }}>
-                        <Typography sx={{ fontSize: 10 }}>{exportCmds.name}</Typography>
+                        <Typography sx={{ fontSize: 10 }}>Name</Typography>
                         <Typography
                           sx={{
                             color: "grey",
